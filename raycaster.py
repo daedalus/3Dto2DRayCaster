@@ -5,6 +5,7 @@
 import os
 import time
 import math
+import curses
 #os.system('clear') 
 
 mapWidth = 24
@@ -15,11 +16,7 @@ h=35
 
 buffer = [[0 for x in range(h)] for x in range(w)] 
 
-import curses
-
 stdscr = curses.initscr()
-
-
 
 def readKeys():
 	c = stdscr.getch()
@@ -72,28 +69,28 @@ worldMap=[[1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
 #}
 
 def screen_init():
-        for y in range(0,h-2):
-                for x in range(0,w):
-                        buffer[x][y] = '*'
-        #stdscr.endwin()
-        #os.system('clear')
+	for y in range(0,h-2):
+		for x in range(0,w):
+			buffer[x][y] = '*'
+	#stdscr.endwin()	
+	#os.system('clear')
 
 def cls():
-        #for y in range(0,h-2):
-        #        for x in range(0,w):
-        #                buffer[x][y] = '*'
+	#for y in range(0,h-2):
+	#        for x in range(0,w):
+	#                buffer[x][y] = '*
 	#stdscr.endwin()
 	os.system('clear')
 
 def redraw():
 	#print "\033[H"
 	for y in range(0,h-2):
-    		str_ = ""
-	    	for x in range(0,w):
-      			str_ += str(buffer[x][y])
-    		print str_ + "\r"
-  	#drawUI()
-  	#print "\033[J"
+		str_ = ""
+		for x in range(0,w):
+			str_ += str(buffer[x][y])
+		print str_ + "\r"
+	#drawUI()
+	#print "\033[J"
 
 def verLine(x, drawStart, drawEnd, color):
 	for y in range(drawStart,drawEnd):
