@@ -14,7 +14,7 @@ mapHeight = 24
 w=90
 h=35
 
-buffer = [[0 for x in range(h)] for x in range(w)] 
+buffer = [[0 for _ in range(h)] for _ in range(w)] 
 
 stdscr = curses.initscr()
 
@@ -96,7 +96,7 @@ def verLine(x, drawStart, drawEnd, color):
 	for y in range(drawStart,drawEnd):
 		#print x,y,color,buffer
 		color_str = '\033[%dm' % (91+color)
-		buffer[x][y] = color_str + "."
+		buffer[x][y] = f"{color_str}."
 
 def main():
 	screen_init()
